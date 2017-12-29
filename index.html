@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.box{
+				background-color: yellowgreen;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="box">
+			<div class="product">
+				<ul>
+					<li><img src="//img30.360buyimg.com/popshop/jfs/t7756/204/717130637/10319/71ed73fa/599686d8Nd19a374a.jpg" /></li>
+					<li>冠亿优品男装专营店</li>
+				</ul>
+			</div>
+		</div>
+		<input type="button" value="请求" />
+	</body>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/template-web.js"></script>
+	<script type="text/html" id="template">
+		<div class="product">
+			<ul>
+				<li><img src="{{shop_logo}}"/></li>
+				<li>{{shop_name}}</li>
+			</ul>
+		</div>
+	</script>
+	<script>
+		$(function() {
+			$('input').click(function() {
+				$.ajax({
+					url: 'index.php',
+					success: function(data) {
+						console.log(data);
+						for (var i=0;i<data.length;i++){
+						var result = template('template', data[i]);
+						$('.box').append(result);
+						console.log(result);
+						}
+					},
+				});
+			});
+		})
+	</script>
+
+</html>
