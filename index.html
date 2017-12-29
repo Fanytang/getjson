@@ -37,7 +37,7 @@
 		$(function() {
 			$('input').click(function() {
 				$.ajax({
-					url: 'index.php',
+					url: 'request.php',
 					success: function(data) {
 						console.log(data);
 						for (var i=0;i<data.length;i++){
