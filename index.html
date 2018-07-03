@@ -28,8 +28,8 @@
 	<script type="text/html" id="template">
 		<div class="product">
 			<ul>
-				<li><img src="{{shop_logo}}"/></li>
-				<li>{{shop_name}}</li>
+				<li><img src="{{url}}"/></li>
+				<li>{{type}}</li>
 			</ul>
 		</div>
 	</script>
@@ -37,15 +37,15 @@
 		$(function() {
 			$('input').click(function() {
 				$.ajax({
-					url: 'jd.json',
+					url: 'http://gank.io/api/random/data/福利/20',
 					success: function(data) {
 						console.log(data);
-						for (var i=0;i<data.length;i++){
-						var result = template('template', data[i]);
+						for (var i=0;i<data.results.length;i++){
+						var result = template('template', data.results[i]);
 						$('.box').append(result);
 						console.log(result);
 						}
-					}
+					},
 				});
 			});
 		})
